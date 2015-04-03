@@ -26,3 +26,19 @@ class riak (
   class { '::riak::service': } ->
   Class['::riak']
 }
+
+  class { '::riak':
+    ulimits => {
+      soft  => 88536,
+      hard => 98536,
+    }
+  }
+
+
+class riak::tuning::ulimits {
+  $settings = merge($::riak::params::ulimits,$::riak::ulimits)
+  $settings.each |String[4,4] $setting, Integer $value| {
+    $user = $::riak::user # don't set from params, user can't override params
+    ## create augeas resource here ##
+  }
+}
