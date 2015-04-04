@@ -53,6 +53,8 @@ class riak::params {
     'storage_backend'                   => 'bitcask',
   }
 
+  $ulimits = {}
+
   case $::osfamily {
     'Debian': {
       $package_name               = 'riak'
