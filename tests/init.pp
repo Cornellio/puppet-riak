@@ -10,3 +10,10 @@
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
 include ::riak
+
+class { '::riak::tuning::ulimits':
+    ulimits => {
+      soft => 88536,
+      hard => 98536,
+    }
+}
