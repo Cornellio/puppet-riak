@@ -14,7 +14,7 @@ class riak (
   Boolean $manage_repo    = $::riak::params::manage_repo,
   String[1] $version      = $::riak::params::version,
   Hash[String, Variant[String, Boolean, Integer]] $settings = {},
-  Hash[String, Integer] $ulimits = {},
+  Hash[String, Integer] $ulimits = {}
 ) inherits ::riak::params {
   if $manage_repo and $manage_package {
     include ::riak::repository
